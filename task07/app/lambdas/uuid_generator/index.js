@@ -11,15 +11,16 @@ export const handler = async (event) => {
   console.log("~~~uuids(10)~~~", uuids);
 
   // Get current ISO time
-  const executionTime = new Date().toISOString();
+  //   const executionTime = new Date().toISOString();
+  //   const microseconds = now.getUTCMilliseconds().toString().padStart(3, '0') + '000';
+  //   const formattedTime = executionTime.replace('Z', '') + microseconds;
+  //   const fileName = `${executionTime}|${formattedTime}`;
+  const fileName = new Date().toISOString();
+  console.log("~~~fileName~~~", fileName);
 
   // Prepare the file content
   const fileContent = JSON.stringify({ ids: uuids }, null, 2);
   console.log("~~~fileContent~~~", fileContent);
-
-  // Define the file name
-  const fileName = `${executionTime}.json`;
-  console.log("~~~fileName~~~", fileName);
 
   // Upload the file to S3
   try {
